@@ -20,7 +20,7 @@ class ProductTableSeeder extends Seeder
         $product->save();
 
         $product = new \App\Product([
-        	'imagePath' => 'http://awoiaf.westeros.org/images/2/24/AStormOfSwords.jpg',
+        	'imagePath' => 'https://images.gr-assets.com/books/1337818095l/228665.jpg',
         	'title' => 'The Eye of the World',
         	'description' => 'The Wheel of Time turns and Ages come and go, leaving memories that become legend. ',
         	'price' => 30,
