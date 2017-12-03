@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Session;
 
 class Handler extends ExceptionHandler
 {
@@ -58,8 +59,10 @@ class Handler extends ExceptionHandler
     {
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
+        }  else { // I want to store the URL the user tried to access previously to signing in 
+            Session::put('oldUrl', $request->url());
+            return redirect()->route('user.signin'); // redirect to sign-in page, if the user is not logged in
         }
-
-        return redirect()->route('user.signin');
+        
     }
 }
